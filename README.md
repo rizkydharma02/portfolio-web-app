@@ -1,4 +1,4 @@
-<h1 align="center">My Portfolio Web</h1>
+<h1 align="center">My Web Portfolio</h1>
 
 ![Demo App](/src/assets/web-preview.png)
 
