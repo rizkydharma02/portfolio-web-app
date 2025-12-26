@@ -36,7 +36,7 @@ import dockerLogo from '../assets/tech_logo/docker.png';
 import zustandLogo from '../assets/tech_logo/zustand.png';
 import shadcnLogo from '../assets/tech_logo/shadcn.png';
 import betterAuthLogo from '../assets/tech_logo/better-auth.png';
-import zodLogo from '../assets/tech_logo/zod.png';
+import zodLogo from '../assets/tech_logo/zod-validation.png';
 import reactHookFormLogo from '../assets/tech_logo/react-hook-form.png';
 import tanstackLogo from '../assets/tech_logo/tanstack.png';
 import jestLogo from '../assets/tech_logo/jest.png';
