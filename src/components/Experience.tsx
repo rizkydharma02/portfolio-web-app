@@ -2,7 +2,7 @@ import { experiences } from '../constant/constant';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-2">
+    <section id="experience" className="py-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient">
       {/* Section Title */}
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold text-white">Experience</h2>
@@ -15,7 +15,7 @@ const Experience = () => {
         {/* Vertical Line */}
         <div className="absolute left-1/2 top-0 h-full w-1 bg-white -translate-x-1/2 hidden sm:block" />
 
-        <div className="space-y-20">
+        <div className="space-y-16 sm:space-y-20">
           {experiences.map((exp, index) => {
             const isLeft = index % 2 === 0;
 
@@ -36,14 +36,14 @@ const Experience = () => {
                   `}
                 >
                   {/* Header */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-white rounded-md overflow-hidden">
+                  <div className="flex items-start gap-4">
+                    <div className="w-14 h-14 bg-white rounded-md overflow-hidden flex-shrink-0">
                       <img src={exp.img} alt={exp.company} className="w-full h-full object-cover" />
                     </div>
 
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-white">{exp.role}</h3>
-                      <p className="text-sm text-gray-300">{exp.company}</p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white break-words">{exp.role}</h3>
+                      <p className="text-sm text-gray-300 break-words">{exp.company}</p>
                       <p className="text-xs text-gray-500 mt-1">{exp.date}</p>
                     </div>
                   </div>
@@ -52,11 +52,11 @@ const Experience = () => {
                   <p className="mt-4 text-gray-400 text-sm leading-relaxed">{exp.desc}</p>
 
                   {/* Skills */}
-                  <div className="mt-4">
-                    <h5 className="text-white font-medium mb-2">Skills</h5>
+                  <div className="mt-6">
+                    <h5 className="text-white font-medium mb-3">Skills</h5>
                     <div className="flex flex-wrap gap-2">
                       {exp.skills.map((skill, i) => (
-                        <span key={i} className="bg-[#8245ec]/20 text-purple-300 border border-[#8245ec] px-3 py-1 text-xs rounded-lg">
+                        <span key={i} className="bg-[#8245ec]/20 text-purple-300 border border-[#8245ec] px-3 py-1 text-xs rounded-lg whitespace-nowrap">
                           {skill}
                         </span>
                       ))}

@@ -43,23 +43,24 @@ const Works = () => {
               overflow-hidden
               transition-all duration-300
               hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(130,69,236,0.6)]
+              flex flex-col
             "
           >
             {/* Image */}
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-48 overflow-hidden flex-shrink-0">
               <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
             </div>
 
             {/* Content */}
-            <div className="p-6 flex flex-col h-[260px]">
-              <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+            <div className="p-6 flex flex-col flex-1">
+              <h3 className="text-xl font-bold text-white mb-2 break-words">{project.title}</h3>
 
-              <p className="text-gray-400 text-sm line-clamp-3 mb-4">{project.desc}</p>
+              <p className="text-gray-400 text-sm line-clamp-3 mb-4 flex-grow">{project.desc}</p>
 
               {/* Tags */}
-              <div className="mt-auto flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 pt-2">
                 {project.tags.map((tag, index) => (
-                  <span key={index} className="bg-[#251f38] text-xs text-purple-400 font-semibold px-2 py-1 rounded-md">
+                  <span key={index} className="bg-[#251f38] text-xs text-purple-400 font-semibold px-2 py-1 rounded-md whitespace-nowrap">
                     {tag}
                   </span>
                 ))}
@@ -71,37 +72,37 @@ const Works = () => {
 
       {/* Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
-          <div className="bg-gray-900 w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 overflow-y-auto">
+          <div className="bg-gray-900 w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl relative my-8">
             {/* Close */}
-            <button onClick={handleCloseModal} className="absolute top-4 right-4 text-3xl text-white hover:text-purple-500 transition">
+            <button onClick={handleCloseModal} className="absolute top-4 right-4 z-10 text-3xl text-white hover:text-purple-500 transition bg-gray-800/80 rounded-full w-10 h-10 flex items-center justify-center">
               &times;
             </button>
 
             {/* Modal Content */}
             <div className="flex flex-col">
               {/* Image */}
-              <div className="w-full max-h-[420px] bg-black flex justify-center items-center">
+              <div className="w-full h-[300px] sm:h-[400px] bg-black flex justify-center items-center overflow-hidden">
                 <img src={selectedProject.img} alt={selectedProject.title} className="w-full h-full object-contain" />
               </div>
 
               {/* Info */}
-              <div className="p-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{selectedProject.title}</h3>
+              <div className="p-6 sm:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 break-words">{selectedProject.title}</h3>
 
                 <p className="text-gray-400 mb-6 leading-relaxed">{selectedProject.desc}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {selectedProject.tags.map((tag, index) => (
-                    <span key={index} className="bg-[#251f38] text-xs text-purple-400 font-semibold px-3 py-1 rounded-md">
+                    <span key={index} className="bg-[#251f38] text-xs text-purple-400 font-semibold px-3 py-1 rounded-md whitespace-nowrap">
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="flex-1 text-center bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-xl font-semibold transition">
                     View Code
                   </a>
