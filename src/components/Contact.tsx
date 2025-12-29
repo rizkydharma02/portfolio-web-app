@@ -4,6 +4,11 @@ import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// env email js
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 const Contact = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -12,12 +17,27 @@ const Contact = () => {
 
     if (!formRef.current) return;
 
+    // validation
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error('Email configuration is missing. Please check your environment variables.', {
+        position: 'top-right',
+        autoClose: 5000,
+        theme: 'dark',
+      });
+      console.error('Missing EmailJS configuration:', {
+        serviceId: !!serviceId,
+        templateId: !!templateId,
+        publicKey: !!publicKey,
+      });
+      return;
+    }
+
     emailjs
       .sendForm(
-        'service_5qoti2e', // Service ID
-        'template_x4uh9qd', // Template ID
+        serviceId, // Service ID
+        templateId, // Template ID
         formRef.current,
-        '205BP4M3HVhVamg2b' // Public Key
+        publicKey // Public Key
       )
       .then(
         () => {
